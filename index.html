@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>计算器</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="container-fluid col-md-offset-4 col-md-4  col-sm-offset-4 col-sm-4 col-xs-offset-1 col-xs-10 my-container">
+      <div class="col-md-12 col-sm-12 col-xs-12 my-input-group my-rmpadding">
+        <textarea type="text" id="input"></textarea>
+      </div>
+
+      <div class="col-md-9 col-sm-9 col-xs-12 my-main-left my-rmpadding">
+        <div class="col-md-12 col-sm-12 col-xs-12 my-rmpadding my-left-group">
+          <input type="text" id="output">
+
+          <div class="col-md-12 col-sm-12 col-xs-12 my-rmpadding">
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="dot" class="btn btn-info col-md-11 col-sm-11 col-xs-11"
+              onclick="addValue('.')">.</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="num0" class="btn btn-info col-md-11 col-sm-11 col-xs-11"
+              onclick="addValue(0)">0</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="bracket" class="btn btn-info col-md-12 col-sm-12 col-xs-12"
+              onclick="addValue('@')">( )</button>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-12 my-rmpadding">
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="num7" class="btn btn-info col-md-11 col-sm-11 col-xs-11"
+              onclick="addValue(7)">7</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="num8" class="btn btn-info col-md-11 col-sm-11 col-xs-11"
+              onclick="addValue(8)">8</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="num9" class="btn btn-info col-md-12 col-sm-12 col-xs-12"
+              onclick="addValue(9)">9</button>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-12 my-rmpadding">
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="num4" class="btn btn-info col-md-11 col-sm-11 col-xs-11"
+              onclick="addValue(4)">4</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="num5" class="btn btn-info col-md-11 col-sm-11 col-xs-11"
+              onclick="addValue(5)">5</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="num6" class="btn btn-info col-md-12 col-sm-12 col-xs-12"
+              onclick="addValue(6)">6</button>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-12 my-rmpadding">
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="num1" class="btn btn-info col-md-11 col-sm-11 col-xs-11"
+              onclick="addValue(1)">1</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="num2" class="btn btn-info col-md-11 col-sm-11 col-xs-11"
+              onclick="addValue(2)">2</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 my-rmpadding">
+              <button type="button" id="num3" class="btn btn-info col-md-12 col-sm-12 col-xs-12"
+              onclick="addValue(3)">3</button>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-12 my-rmpadding">
+            <button type="button" id="equal" class="btn btn-info col-md-12 col-sm-12 col-xs-12"
+            onclick="showResult()">=</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-3 col-xs-12 my-rmpadding my-main-right">
+        <div class="col-md-offset-1 col-md-11 col-sm-offset-1 col-sm-11 col-xs-12 my-rmpadding my-right-group">
+            <button type="button" id="clear" class="btn btn-success
+            col-md-offset-0 col-md-12 col-sm-offset-0 col-sm-12 col-xs-3" onclick="clea()">Clr</button>
+            <button type="button" id="del" class="btn btn-success
+            col-md-offset-0 col-md-12 col-sm-offset-0 col-sm-12 col-xs-offset-1 col-xs-3" onclick="del()">Del</button>
+            <button type="button" id="divide" class="btn btn-warning
+            col-md-offset-0 col-md-12 col-sm-offset-0 col-sm-12 col-xs-offset-1 col-xs-4" onclick="addValue('/')">/</button>
+            <button type="button" id="multiply" class="btn btn-warning
+            col-md-offset-0 col-md-12 col-sm-offset-0 col-sm-12 col-xs-3" onclick="addValue('*')">*</button>
+            <button type="button" id="minus" class="btn btn-danger
+            col-md-offset-0 col-md-12 col-sm-offset-0 col-sm-12 col-xs-offset-1 col-xs-3" onclick="addValue('-')">-</button>
+            <button type="button" id="add" class="btn btn-danger
+            col-md-offset-0 col-md-12 col-sm-offset-0 col-sm-12 col-xs-offset-1 col-xs-4" onclick="addValue('+')">+</button>
+        </div>
+      </div>
+  </div>
+  <script src="scripts/isinarrayjudger.js"></script>
+  <script src="scripts/prehandler.js"></script>
+  <script src="scripts/checker.js"></script>
+  <script src="scripts/calculator.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
