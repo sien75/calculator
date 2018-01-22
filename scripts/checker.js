@@ -12,7 +12,7 @@ function Checker(accept) {
       if(isInArrayJudger.isInArray(accept[i], 'ammd'))
         checkedOrNot = checkedOrNot && checkAmmd(accept[i+1]);
       else if(isInArrayJudger.isInArray(accept[i], 'number'))
-        checkedOrNot = checkedOrNot && checkNumber(accept[i+1]);
+        checkedOrNot = checkedOrNot && checkNumber(accept[i-1], accept[i], accept[i+1]);
       else if(accept[i] == '(')checkedOrNot = checkedOrNot && checkLeftBracket(accept[i+1]);
       else if(accept[i] == ')')checkedOrNot = checkedOrNot && checkRightBracket(accept[i+1]);
       if(!checkedOrNot)return false;
@@ -29,9 +29,10 @@ function Checker(accept) {
     return val=='(' || isInArrayJudger.isInArray(val, 'number') || val=='+' || val=='-';
   }
 
-  function checkNumber(val) {
-    return isInArrayJudger.isInArray(val, 'number') ||
-      isInArrayJudger.isInArray(val, 'ammd') || val==')' || val=='.' || val==undefined;
+  function checkNumber(left, mid, right) {
+    if(mid == '.'&&!checkDot(left, right))return false;
+    return isInArrayJudger.isInArray(right, 'number') ||
+      isInArrayJudger.isInArray(right, 'ammd') || right==')' || right=='.' || right==undefined;
   }
 
   function checkLeftBracket(val) {
@@ -42,5 +43,10 @@ function Checker(accept) {
   function checkRightBracket(val) {
     bracket_isBalanced --;
     return val==')' || isInArrayJudger.isInArray(val, 'ammd') || val==undefined;
+  }
+
+  function checkDot(left, right) {
+    return (isInArrayJudger.isInArray(left, 'number')&&left!='.') ||
+      (isInArrayJudger.isInArray(right, 'number')&&right!='.');
   }
 }
