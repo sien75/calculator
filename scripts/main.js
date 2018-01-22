@@ -1,7 +1,9 @@
 var output = document.getElementById('output');
 var input = document.getElementById('input');
+var browser = new Browser();
 
 window.onload = function() {//初始下就聚焦于输入框
+  if(browser.versions.mobile)input.readOnly = "readOnly";
   input.focus();
   //window.open('http://www.baidu.com','wroxWindow','resizable=no');
 }
