@@ -1,5 +1,5 @@
 function Calculator() {
-  var accept = arguments[0].replace(' ', '');
+  var accept = arguments[0].replace(' ', '').replace('|', '');
   var isInArrayJudger = new IsInArrayJudger();
   var checkedFomul;
   var replaceTable = {

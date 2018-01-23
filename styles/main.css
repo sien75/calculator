@@ -9,16 +9,18 @@
 
 #input {
   width: 100%;
-  height: 60px;
+  height: 100px;
   resize: none;
   overflow-y: scroll;
+  font-size: 30px;
 }
 
 #output {
-  height: 32px;
+  height: 40px;
   width: 100%;
   margin-top: 4px;
   margin-bottom: 1px;
+  font-size: 25px;
 }
 
 .my-rmpadding {
@@ -35,4 +37,8 @@
 
 .my-left-group>*, .my-right-group>* {
   margin-top: 3px;
+}
+
+.my-extend > * {
+  margin-bottom: 2px;
 }

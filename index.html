@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <div class="container-fluid col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-1 col-xs-10 my-container">
+  <div class="container-fluid col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 my-container">
       <div class="col-md-12 col-sm-12 col-xs-12 my-input-group my-rmpadding">
-        <textarea type="text" id="input"></textarea>
+        <textarea type="text" id="input" onclick="insertCursor()"></textarea>
       </div>
 
       <div class="col-md-9 col-sm-9 col-xs-9 my-main-left my-rmpadding">
@@ -102,9 +102,100 @@
       </div>
   </div>
   <!--以上是基础计算器部分-->
-  <div class="container-fluid  col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-1 col-xs-10 my-container">
-    d;
+  <div class="container-fluid col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12
+   my-extend my-container">
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="sin" class="btn btn-default
+      col-md-11 col-sm-11 col-xs-11"
+      >sin</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="cos" class="btn btn-default
+      col-md-11 col-sm-11 col-xs-11"
+      >cos</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="tan" class="btn btn-default
+      col-md-12 col-sm-12 col-xs-12"
+      >tan</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="abs" class="btn btn-default
+      col-md-offset-1 col-md-11 col-sm-offset-1 col-sm-11 col-xs-offset col-xs-11"
+      >|x|</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="asin" class="btn btn-default
+      col-md-11 col-sm-11 col-xs-11"
+      > asin</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="acos" class="btn btn-default
+      col-md-11 col-sm-11 col-xs-11"
+      >acos</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="atan" class="btn btn-default
+      col-md-12 col-sm-12 col-xs-12"
+      >atan</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="fac" class="btn btn-default
+      col-md-offset-1 col-md-11 col-sm-offset-1 col-sm-11 col-xs-offset col-xs-11"
+      >!</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="ln" class="btn btn-default
+      col-md-11 col-sm-11 col-xs-11"
+      >ln</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="lg" class="btn btn-default
+      col-md-11 col-sm-11 col-xs-11"
+      >lg</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="squreofncon" class="btn btn-default
+      col-md-12 col-sm-12 col-xs-12"
+      >e^(x)</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="squreoften" class="btn btn-default
+      col-md-offset-1 col-md-11 col-sm-offset-1 col-sm-11 col-xs-offset col-xs-11"
+      >10^(x)</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="pi" class="btn btn-default
+      col-md-11 col-sm-11 col-xs-11"
+      >π</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="ncon" class="btn btn-default
+      col-md-11 col-sm-11 col-xs-11"
+      >e</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="twosquare" class="btn btn-default
+      col-md-12 col-sm-12 col-xs-12"
+      >x^(2)</button>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3 my-rmpadding">
+      <button type="button" id="square" class="btn btn-default
+      col-md-offset-1 col-md-11 col-sm-offset-1 col-sm-11 col-xs-offset col-xs-11"
+      >x^(y)</button>
+    </div>
   </div>
+  <!--以上是扩展部分-->
+  <div class="clearfix">
+
+  </div>
+  <input type="text" id="input-prevent" placeholder="试试能不能输入" />
+  <script>
+  document.getElementById('input-prevent').addEventListener('keypress',function(e){
+      var eObj = e || window.event;
+      eObj.preventDefault();
+  });
+  </script>
   <script type="application/x-javascript" src="scripts/browser.js"></script>
   <script type="application/x-javascript" src="scripts/isinarrayjudger.js"></script>
   <script type="application/x-javascript" src="scripts/prehandler.js"></script>
