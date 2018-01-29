@@ -1,7 +1,7 @@
 function Calculator() {
   var accept = arguments[0].replace(' ', '').toLowerCase();
-  var transferer = new Transfener(accept);
-  accept = transferer.transfer();
+  //var transferer = new Transfener(accept);
+  //accept = transferer.transfer();
   var isInArrayJudger = new IsInArrayJudger();
   var checkedFomul;
   var replaceTable = {
@@ -23,6 +23,7 @@ function Calculator() {
   function cal(fomul) {
     fomul = convertTo(fomul);
     //将加减乘除号之后的正负号合并成代替符号#$，防止被之后的加减函数当作分割符
+	
     for (var i=0; i < fomul.length; i++) {
       if(fomul[i]=='(') {
         var j = findItsRightBracket(i, fomul);
