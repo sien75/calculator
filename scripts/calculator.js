@@ -1,5 +1,7 @@
 function Calculator() {
-  var accept = arguments[0].replace(' ', '').replace('|', '');
+  var accept = arguments[0].replace(' ', '').toLowerCase();
+  var transferer = new Transfener(accept);
+  accept = transferer.transfer();
   var isInArrayJudger = new IsInArrayJudger();
   var checkedFomul;
   var replaceTable = {
