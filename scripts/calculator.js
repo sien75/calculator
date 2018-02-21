@@ -1,31 +1,28 @@
-function Calculator() {
-  var accept = arguments[0].replace(' ', '').toLowerCase();
-  //var transferer = new Transfener(accept);
-  //accept = transferer.transfer();
+function Calculator(accept) {
   var isInArrayJudger = new IsInArrayJudger();
-  var checkedFomul;
   var replaceTable = {
     '+' : '#',
     '-' : '$',
     '#' : '#',
     '$' : '$'
   }
-
+	var checkedFomula = (function() {
+		var checker = new Checker(accept);
+		return checker.checkedFomula;
+	})();
+	
   this.calculate = function() {
-    return cal(checkedFomul);
+		if(checkedFomula === false)return null;
+		return cal(checkedFomula);
   }
-
-  this.check = function() {
-    var checker = new Checker(accept);
-    return checkedFomul = checker.isChecked();
-  }
-
+	
   function cal(fomul) {
     fomul = convertTo(fomul);
     //将加减乘除号之后的正负号合并成代替符号#$，防止被之后的加减函数当作分割符
 	
     for (var i=0; i < fomul.length; i++) {
       if(fomul[i]=='(') {
+				if(97<=parseFloat(fomul[i-1])<=122)
         var j = findItsRightBracket(i, fomul);
         if(j === false)return 0;
         return cal(fomul.slice(0, i) +
@@ -34,7 +31,7 @@ function Calculator() {
     }//运算括号内的式子
     return add(fomul);
   }
-
+	
   function add() {//加
     var fomula = arguments[0].split('+');
     blankToZero(fomula);//将分割后数组中空项转换成0
