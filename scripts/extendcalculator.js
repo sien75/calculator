@@ -13,12 +13,12 @@ function ExtendCalculator(accept) {
 		var exTendChecker = new ExtendChecker(accept);
 		return exTendChecker.checkedFomula;
 	})();
-	
+
 	this.calculate = function() {
 		if(checkedFomula === false)return null;
 		return powTrans(cal(checkedFomula));
 	}
-	
+
 	function powTrans(fomul) {
 		if(fomul && fomul.toString().indexOf('e')>=0) {
 			fomul = fomul.toString();
@@ -28,7 +28,7 @@ function ExtendCalculator(accept) {
 		}
 		return fomul;
 	}
-	
+
 	function cal(fomul) {
 		var left, mid, right;//用于^, 因为^有两个参数:()^()
 		var start, bLeft, bRight;//用于一个参数的扩展运算符
@@ -65,7 +65,7 @@ function ExtendCalculator(accept) {
 		var calculator = new Calculator(fomul);
 		return calculator.calculate();
 	}
-	
+
 	function handleExtends(name, para1, para2) {
 		if(para1)
 			for(var u=0; u<para1.length; u++)
@@ -89,10 +89,10 @@ function ExtendCalculator(accept) {
 				result *= i;
 			return result.toString();
 		}
-		name = replaceTable[name];alert(name + ' ' + arguments[3]);
+		name = replaceTable[name];
 		return Math[name](parseFloat(para1), parseFloat(para2)).toString();
 	}
-	
+
 	function findItsRightBracket(i, fomul) {//找到某个左括号对应的右括号的函数
     var num = 1;
     for (var a = i+1; a < fomul.length; a++) {
